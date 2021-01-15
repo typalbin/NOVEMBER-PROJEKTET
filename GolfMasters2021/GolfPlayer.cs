@@ -5,16 +5,21 @@ namespace GolfMasters2021
 {
     public class GolfPlayer
     {
+
+        //här skapar jag variabler och ger dom namn
         public int age;
         public string name;
         public int averageDriverLength;
 
         public int driverLength;
+
+        //skapar en random generator som jag sedan använder för att slumpa tal
         Random generator = new Random();
 
-        List<string> playerNames = new List<string>() {"Tiger Woods", "Dustin Johnsson", "Rory McIlroy"};
+        //skapar en list där jag lagrar namn på spelare som man kan välja i spelet
+        List<string> playerNames = new List<string>() {"Tiger Woods", "Dustin Johnsson", "Rory McIlroy", "Nelson Mandela", "Bat Man", "Ernie Els", "Spider Man", "Spindel Mannen"};
         
-
+        //en konstruktor som innehåller själva golfspelaren, den skapar en ny golfspelare och randomizar namn ålder och avarage driver length.
         public GolfPlayer(){
             averageDriverLength = generator.Next(200,251);
             int randomPlayer = generator.Next(0, playerNames.Count);
@@ -22,30 +27,32 @@ namespace GolfMasters2021
             age = generator.Next(25, 50);
         }
 
-        public void DrawPlayerStats(){
+        //den här metoden skriver ut spelarens stats
+        public void drawPlayerStats(){
             Console.WriteLine("Namn: " + name);
             Console.WriteLine("Ålder: " + age);
             Console.WriteLine("Average Driver Length: " + averageDriverLength);
         }
 
       
-        public void DrawDriverLength(){
-            int bajs = generator.Next(1,4);
+        //har skapar jag en metod som räknar ut hur långt varje spelare som är med i spelet slår bollen
+        public void drawDriverLength(){
+            int player = generator.Next(1,4);
 
-            if (bajs == 1)
+            if (player == 1)
             {
-                System.Console.WriteLine("BRA DRIVE, average");
+                System.Console.WriteLine("Helt Okej drive :/");
                 driverLength = averageDriverLength;
             }
 
-             if (bajs == 2)
+             if (player == 2)
              {
-                 System.Console.WriteLine("dålig träff");
+                 System.Console.WriteLine("Dålig träff :(");
                  driverLength = generator.Next(averageDriverLength - 40, averageDriverLength - 10);
             }
-             if (bajs == 3)
+             if (player == 3)
              {
-                 System.Console.WriteLine("BÄSTA DRIVEN IDAG???");
+                 System.Console.WriteLine("Grym Träff!");
                  driverLength = generator.Next(averageDriverLength + 10, averageDriverLength + 40);
             }
 

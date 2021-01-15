@@ -7,8 +7,12 @@ namespace GolfMasters2021
     {
         static void Main(string[] args)
         {
+
+            // skapar instanser av klassen
            GolfPlayer player1 = new GolfPlayer();
            GolfPlayer player2 = new GolfPlayer();
+
+           //skapar variabler
 
            bool seeStats = false;
 
@@ -18,15 +22,22 @@ namespace GolfMasters2021
 
            bool choice = false;
 
-           System.Console.WriteLine("jalla lägg den");
-           System.Console.WriteLine("skriv !stats för att se stats");
+            //här börjar själva interaktionen med spelet
+           System.Console.WriteLine("Välkommen till årets long driving tävling som hålls här på Bro Hof GK");
+           System.Console.WriteLine("Ditt uppdrag är att gissa vem som vinner genom att se på spelarnas stats och gissa vem som vinner.");
+           Console.ReadLine();
+           System.Console.WriteLine("Skriv !stats för att se stats :)");
 
+
+            // en loop som körs tills man skriver !stats.
            while(seeStats == false)
         { 
                 if (Console.ReadLine() == "!stats")
                 {
-                player1.DrawPlayerStats();
-                player2.DrawPlayerStats();
+
+                    // här får man se spelares stats
+                player1.drawPlayerStats();
+                player2.drawPlayerStats();
                 Console.ReadLine();
 
                 seeStats = true;
@@ -39,6 +50,8 @@ namespace GolfMasters2021
         }
 
 
+
+            //här gissar man antingen på spelare 1 eller 2
             while(choice == false)
             {
                 
@@ -63,7 +76,7 @@ namespace GolfMasters2021
                 }
 
                 else {
-                    System.Console.WriteLine("ey din dummer gissa på en legitim siffra kahbe");
+                    System.Console.WriteLine("Lek inte ball nu, gissa på antingen spelare 1 eller 2");
                     playerGuess = 0;
                 }
 
@@ -73,22 +86,28 @@ namespace GolfMasters2021
 
             Console.Clear();
 
+            //konsollen clearas och man får se spelarnas Drives och sen ser man om man vinner eller inte
             System.Console.WriteLine("Nu kör spelarna");
+            System.Console.WriteLine("Tryck ENTER för att se resultaten");
             Console.ReadLine();
 
-            player1.DrawDriverLength();
-            player2.DrawDriverLength();
+            //här skrivs resultaten ut, tillsammans med om det va en bra eller dålig träff.
+
+            player1.drawDriverLength();
+            player2.drawDriverLength();
+
+            Console.ReadLine();
             
 
           if(playerGuess == 1)
           {
               if (player1.driverLength > player2.driverLength )
               {
-               System.Console.WriteLine("du gissa rätt");
+               System.Console.WriteLine("Du gissade rätt, du vinner 100 000kr");
                }
 
                else{
-                   System.Console.WriteLine("du lose");
+                   System.Console.WriteLine("Du förlora");
                }
                
           }
@@ -97,33 +116,14 @@ namespace GolfMasters2021
           {
               if (player1.driverLength < player2.driverLength )
               {
-               System.Console.WriteLine("du gissa rätt");
+               System.Console.WriteLine("Du gissade rätt, du vinner 100 000 kr");
                }
 
                else{
-                   System.Console.WriteLine("du lose");
+                   System.Console.WriteLine("Du förlora");
                }
                
           }
-
-
-
-
-           // player1.DrawPlayerStats();
-           // player2.DrawPlayerStats();
-
-
-           // player1.DrawDriverLength();
-           // player2.DrawDriverLength();
-
-           // if (player1.driverLength > player2.driverLength ){
-              //  System.Console.WriteLine("player 1 vinner");
-
-           // }
-//
-           // else{
-           //     System.Console.WriteLine("player 2 vinner");
-           // }
 
             Console.ReadLine();
         
